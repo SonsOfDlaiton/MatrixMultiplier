@@ -1,7 +1,7 @@
 all: make run
 
 make:
-	g++ -O0 Dlaiton++.cpp -std=c++11 -o Dlaiton++
+	g++ -O0 Dlaiton++.cpp -w -std=c++11 -o Dlaiton++
 
 run: make
 	./Dlaiton++

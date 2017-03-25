@@ -1,0 +1,61 @@
+Descrição do problema:
+
+Nesse trabalho você deve otimizar a Multiplicação de matrizes (sequencial).
+
+Considere que as matrizes A e B de entrada são matrizes quadradas nxn de doubles (https://en.wikipedia.org/wiki/Double-precision_floating-point_format). Isto pode ser implementado usando 2n^3 operações em ponto flutuante (n^3 somas, n^3 multiplicações), como no seguinte código::
+
+  for i = 1 to n
+    for j = 1 to n
+      for k = 1 to n
+        C(i,j) = C(i,j) + A(i,k) * B(k,j)
+      end
+    end
+  end
+
+Instruções
+
+O trabalho pode ser feito em dupla. Não copie códigos prontos da internet, estamos aqui para aprender.
+
+Os programas que executarem mais rápido (tolerância de 10%) na katrina (200.131.37.139) irão receber o máximo de (10) pontos. Os restantes serão organizados em faixas decrescentes dependendo do desempenho. O código TEM que estar correto, códigos retornando resultados errados serão anulados. 
+Você deverá executar seus testes com matrizes de diferentes tamanhos. Ex.: 400, 1600, 3600, 6400, 10000.
+
+Você precisará uma conta na katrina (200.131.37.139), entre em contato para criar sua conta.
+
+A submissão deve ser feita em um zip no Moodle, no link disponibilizado, contendo:
+* matmult.c, o código fonte que contém a sua implementação da rotina:
+  void square_maxmult(int, double*, double*, double*);
+* Relatorio.nome.pdf, explicando cada passo de otimização usado ou tentado (por que, como, conclusões-explicar resultado) e os resultados correspondentes.
+  Estrutura do relatório (use latex: \documentclass[a4paper,10pt]{report}):
+  - Resumo: quais métodos usou, quanto melhorou seu tempo de execução
+  - Seção Experimentos: descrição
+  - Resultados: Figuras com gráficos (usando o gnuplot) de tamanho da matriz vs tempo de execução. Discussão de cada resultado. Documente cada experimento que executar ainda que ele não tenha melhorado o tempo de execução e justifique o que aconteceu. 
+  - Conclusões
+
+A nota irá depender do tempo de execução da sua aplicação. As explicações/experimentos no seu relatório serão corrigidas mas não formarão parte da nota nesse exercício, senão que serão usadas para aprender como fazer um bom relatório. Aproveite a oportunidade, pois ele irá valer pontos nos próximos TPs. 
+
+Você pode implementar algum algoritmo com complexidade assintótica menor que O(n3) (ex. Strassen https://en.wikipedia.org/wiki/Strassen_algorithm) valendo um ponto adicional, mas ele  não será considerado na comparação de desempenho entre algoritmos sequenciais.
+
+Compile usando gcc -O0. 
+
+Verificação de erros:
+|square_dgemm(n,A,B,0) - A*B| < eps*n*|A|*|B|. 
+onde eps := 2^-52 = 2.2 * 10^-16 (eps=machine epsilon https://en.wikipedia.org/wiki/Machine_epsilon).
+
+benchmark.c: Programa para medir o tempo de verificar a correção do algoritmo
+
+Guias de uso do gnuplot: 
+http://www.uft.edu.br/engambiental/prof/catalunha/arquivos/gnuplot/resumo_gnuplot.pdf
+http://www.uel.br/projetos/matessencial/superior/pdfs/Gnuplot-Ajuste.pdf
+http://www.notasemcfd.com/2010/02/gnuplot-introducao-basica.html
+
+Arquivo de dados de exemplo para gnuplot: dados.dat
+
+Referências
+Goto, K., and van de Geijn, R. A. 2008. Anatomy of High-Performance Matrix Multiplication, ACM Transactions on Mathematical Software 34, 3, Article 12. 
+(Note: explains the design decisions for the GotoBLAS dgemm implementation, which also apply to your code.)
+Chellappa, S., Franchetti, F., and Püschel, M. 2008. How To Write Fast Numerical Code: A Small Introduction, Lecture Notes in Computer Science 5235, 196-259.
+(Note: how to write C code for modern compilers and memory hierarchies, so that it runs fast. Recommended reading, especially for newcomers to code optimization.)
+Bilmes, et al. The PHiPAC (Portable High Performance ANSI C) Page for BLAS3 Compatible Fast Matrix Matrix Multiply.
+(Note: PHiPAC is a code-generating autotuner for matmul that started as a submission for this HW in a previous semester of CS267. Also see ATLAS; both are good examples if you are considering code generation strategies.)
+Lam, M. S., Rothberg, E. E, and Wolf, M. E. 1991. The Cache Performance and Optimization of Blocked Algorithms, ASPLOS'91, 63-74.
+(Note: clearly explains cache blocking, supported by with performance models.)

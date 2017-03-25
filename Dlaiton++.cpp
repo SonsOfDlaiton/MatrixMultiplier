@@ -39,6 +39,8 @@ int main(){
 	int ***S3 = Aloc3DMat(x,y,t);
 
 	fill3DMatrizWithValue(x,y,t,S3,1);
+	char *name;
+	long bestOfAll;
 	long implicito, explicito, prevendo, achatando;
 
 	implicito=Implicito(A, B, S0,x,y,t);
@@ -50,5 +52,18 @@ int main(){
 	cout<<"Explicito ";cout.width(9);cout<<right<<explicito<<endl;
 	cout<<"Prevendo  ";cout.width(9);cout<<right<<prevendo<<endl;
 	cout<<"Achatando ";cout.width(9);cout<<right<<achatando<<endl;
+
+	bestOfAll=implicito;
+	if(explicito<bestOfAll)bestOfAll=explicito;
+	if(prevendo<bestOfAll)bestOfAll=prevendo;
+	if(achatando<bestOfAll)bestOfAll=achatando;
+
+	if(bestOfAll==implicito)name="implicito";
+	else if(bestOfAll==explicito)name="explicito";
+	else if(bestOfAll==prevendo)name="prevendo";
+	else if(bestOfAll==achatando)name="achatando";
+	else name="err";
+
+	cout<<endl<<"Melhor algoritmo "<<name<<" \n\n";
 	
 }
