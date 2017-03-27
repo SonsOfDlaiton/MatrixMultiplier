@@ -25,7 +25,13 @@ long forVar(int iterations);
 long forReverse(int iterations);
 long saveElement();
 
-
+#define ARQUIVO1 "soma.txt"
+#define ARQUIVO2 "multiplicacao.txt"
+#define ARQUIVO3 "ponto_flutuante.txt"
+#define ARQUIVO4 "multiplica_por1.txt"
+#define ARQUIVO5 "outside.txt"
+#define ARQUIVO6 "reverse.txt"
+#define ARQUIVO7 "salvar.txt"
 
 
 
@@ -33,6 +39,7 @@ long saveElement();
 
 int main(){
 	srand(time(NULL));
+	FILE *arquivo = fopen(ARQUIVO1, "a");
 	long s=getTime();
 
 	double sumTest=0;
@@ -40,73 +47,106 @@ int main(){
 		sumTest+=sum(ITERATIONS);
 	sumTest/=NOFTESTS;
 	if(sumTest>0){
-		printf("A=A+B mais rapido que A+=B, diff=%lf\n",sumTest);
+		//printf("A=A+B mais rapido que A+=B, diff=%lf\n",sumTest);
+		fputs("a\n", arquivo);
 	}else{
-		printf("A+=B mais rapido que A=A+B, diff=%lf\n",sumTest);
+		//printf("A+=B mais rapido que A=A+B, diff=%lf\n",sumTest); MUITO MAIS RAPIDO
+		fputs("b\n", arquivo);
 	}
+	fclose(arquivo);
 
 	double multiTest=0;
+	arquivo = fopen(ARQUIVO2, "a");
 	for(int i=0;i<NOFTESTS;i++)
 		multiTest+=multi(ITERATIONS);
 	multiTest/=NOFTESTS;
 	if(multiTest>0){
-		printf("A=A*B mais rapido que A*=B, diff=%lf\n",multiTest);
+		//printf("A=A*B mais rapido que A*=B, diff=%lf\n",multiTest);
+		fputs("a\n", arquivo);
 	}else{
-		printf("A*=B mais rapido que A=A*B, diff=%lf\n",multiTest);
+		//printf("A*=B mais rapido que A=A*B, diff=%lf\n",multiTest); MAIS RAPIDO
+		fputs("b\n", arquivo);
 	}
+	fclose(arquivo);
 
 	double floatTest=0;
+	arquivo = fopen(ARQUIVO3, "a");
 	for(int i=0;i<NOFTESTS;i++)
 		floatTest+=floatVsDouble(ITERATIONS);
 	floatTest/=NOFTESTS;
 	if(floatTest>0){
-		printf("Double mais rapido que float, diff=%lf\n",floatTest);
+		//printf("Double mais rapido que float, diff=%lf\n",floatTest);
+		fputs("a\n", arquivo);
 	}else{
-		printf("Float mais rapido que double, diff=%lf\n",floatTest);
+		//printf("Float mais rapido que double, diff=%lf\n",floatTest); MAIS RAPIDO
+		fputs("b\n", arquivo);
 	}
+	fclose(arquivo);
 
 	double zoTest=0;
+	arquivo = fopen(ARQUIVO4, "a");
 	for(int i=0;i<NOFTESTS;i++)
 		zoTest+=zeroVsOne(ITERATIONS);
 	zoTest/=NOFTESTS;
 	if(zoTest>0){
-		printf("1*=a mais rapido que 0+=a, diff=%lf\n",zoTest);
+		//printf("1*=a mais rapido que 0+=a, diff=%lf\n",zoTest); MUITO MAIS RAPIDO
+		fputs("a\n", arquivo);
 	}else{
-		printf("0+=a mais rapido que 1*=a, diff=%lf\n",zoTest);
+		//printf("0+=a mais rapido que 1*=a, diff=%lf\n",zoTest);
+		fputs("b\n", arquivo);
 	}
+	fclose(arquivo);
 
 	double forVTest=0;
+	arquivo = fopen(ARQUIVO5, "a");
 	for(int i=0;i<NOFTESTS;i++)
 		forVTest+=forVar(ITERATIONS);
 	forVTest/=NOFTESTS;
 	if(forVTest>0){
-		printf("Outside mais rapido que inside, diff=%lf\n",forVTest);
+		//printf("Outside mais rapido que inside, diff=%lf\n",forVTest); MUITO MAIS RAPIDO
+		fputs("a\n", arquivo);
 	}else{
-		printf("Inside mais rapido que outside, diff=%lf\n",forVTest);
+		//printf("Inside mais rapido que outside, diff=%lf\n",forVTest);
+		fputs("b\n", arquivo);
 	}
+	fclose(arquivo);
 
 	double forRTest=0;
+	arquivo = fopen(ARQUIVO6, "a");
 	for(int i=0;i<NOFTESTS;i++)
 		forRTest+=forReverse(ITERATIONS);
 	forRTest/=NOFTESTS;
 	if(forRTest>0){
-		printf("Reverse mais rapido que normal, diff=%lf\n",forRTest);
+		//printf("Reverse mais rapido que normal, diff=%lf\n",forRTest); MUITO MAIS RAPIDO
+		fputs("a\n", arquivo);
 	}else{
-		printf("Normal mais rapido que reverse, diff=%lf\n",forRTest);
+		//printf("Normal mais rapido que reverse, diff=%lf\n",forRTest);
+		fputs("b\n", arquivo);
 	}
+	fclose(arquivo);
 
 	double saveElementTest=0;
+	arquivo = fopen(ARQUIVO7, "a");
 	for(int i=0;i<NOFTESTS;i++)
 		saveElementTest+=saveElement();
 	saveElementTest/=NOFTESTS;
 	if(saveElementTest>0){
-		printf("Scessar diretamente mais rapido que salvar, diff=%lf\n",saveElementTest);
+		//printf("Acessar diretamente mais rapido que salvar, diff=%lf\n",saveElementTest);
+		fputs("a\n", arquivo);
 	}else{
-		printf("salvar mais rapido que acessar diretamente, diff=%lf\n",saveElementTest);
+		//printf("salvar mais rapido que acessar diretamente, diff=%lf\n",saveElementTest); MUITO MAIS RAPIDO
+		fputs("b\n", arquivo);
 	}
+	fclose(arquivo);
 
 	long e=getTime();
-	printf("\nTotal Time: %ld\n",e-s);
+	int id =0;
+	char aux;
+	arquivo = fopen(ARQUIVO1, "r");
+	while(fscanf(arquivo,"%c\n",&aux)!=EOF){
+		printf("Id: %i\n",++id);
+	}
+	printf("\nTotal Time: %ld\n ",e-s);
 
 	return 0;
 }
