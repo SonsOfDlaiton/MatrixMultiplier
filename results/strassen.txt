@@ -1,0 +1,21 @@
+Description:	Dlaiton, best way dgemm.
+
+Size: 31	Mflop/s:   16.374	Percentage:  0.09	Seconds:0.116442
+Size: 32	Mflop/s:  17.5473	Percentage:  0.09	Seconds:0.119514
+Size: 96	Mflop/s:  9.81274	Percentage:  0.05	Seconds:0.180324
+Size: 97	Mflop/s:  10.1288	Percentage:  0.05	Seconds:0.180214
+Size: 127	Mflop/s:  22.6984	Percentage:  0.12	Seconds:0.180487
+Size: 128	Mflop/s:  23.2265	Percentage:  0.12	Seconds:0.180583
+Size: 129	Mflop/s:  3.37045	Percentage:  0.02	Seconds:1.273828
+Size: 191	Mflop/s:  10.9253	Percentage:  0.06	Seconds:1.275548
+Size: 192	Mflop/s:  11.0998	Percentage:  0.06	Seconds:1.275322
+Size: 229	Mflop/s:  17.9292	Percentage:  0.09	Seconds:1.339600
+Size: 255	Mflop/s:  17.3214	Percentage:  0.09	Seconds:1.914557
+Size: 256	Mflop/s:  18.0342	Percentage:  0.09	Seconds:1.860603
+Size: 257	Mflop/s:   1.0209	Percentage:  0.01	Seconds:33.254314
+Size: 319	Mflop/s:  1.97431	Percentage:  0.01	Seconds:32.884084
+Size: 320	Mflop/s:  2.04264	Percentage:  0.01	Seconds:32.083988
+Size: 321	Mflop/s:  2.03991	Percentage:  0.01	Seconds:32.428980
+Size: 417	Mflop/s:  3.21304	Percentage:  0.02	Seconds:45.135944
+make: *** [run] Killed: 9
+Peak average: 0.055

@@ -1,16 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
-#include "../DlaitonMatrix.h"
+#include "../Old/DlaitonMatrix.h"
 
 #define NOFTESTS 10000
 #define ITERATIONS 10000
 #define GCC 1
 
 #if GCC==1
-	#include "../DlaitonPerf.h"
+	#include "../Old/DlaitonPerf.h"
 #else
-	#include "../DlaitonChronoPerf.h"
+	#include "../Old/DlaitonChronoPerf.h"
 	long getTime(){
 		return getNanoSec();
 	}
@@ -25,13 +25,13 @@ long forVar(int iterations);
 long forReverse(int iterations);
 long saveElement();
 
-#define ARQUIVO1 "soma.txt"
-#define ARQUIVO2 "multiplicacao.txt"
-#define ARQUIVO3 "ponto_flutuante.txt"
-#define ARQUIVO4 "multiplica_por1.txt"
-#define ARQUIVO5 "outside.txt"
-#define ARQUIVO6 "reverse.txt"
-#define ARQUIVO7 "salvar.txt"
+#define ARQUIVO1 "soma.txt" 				//A+=B (MAIS RAPIDO)
+#define ARQUIVO2 "multiplicacao.txt"		//A=A*B (MAIS RAPIDO)
+#define ARQUIVO3 "ponto_flutuante.txt"		//float (MAIS RAPIDO)
+#define ARQUIVO4 "multiplica_por1.txt"		//A*=1 (MAIS RAPIDO)
+#define ARQUIVO5 "outside.txt"				//var externa (MAIS RAPIDO)
+#define ARQUIVO6 "reverse.txt"				//normal (MAIS RAPIDO)
+#define ARQUIVO7 "salvar.txt"				//salvar (MUITO MAIS RAPIDO)
 
 
 
@@ -50,7 +50,7 @@ int main(){
 		//printf("A=A+B mais rapido que A+=B, diff=%lf\n",sumTest);
 		fputs("a\n", arquivo);
 	}else{
-		//printf("A+=B mais rapido que A=A+B, diff=%lf\n",sumTest); MUITO MAIS RAPIDO
+		//printf("A+=B mais rapido que A=A+B, diff=%lf\n",sumTest); 
 		fputs("b\n", arquivo);
 	}
 	fclose(arquivo);
@@ -64,7 +64,7 @@ int main(){
 		//printf("A=A*B mais rapido que A*=B, diff=%lf\n",multiTest);
 		fputs("a\n", arquivo);
 	}else{
-		//printf("A*=B mais rapido que A=A*B, diff=%lf\n",multiTest); MAIS RAPIDO
+		//printf("A*=B mais rapido que A=A*B, diff=%lf\n",multiTest);
 		fputs("b\n", arquivo);
 	}
 	fclose(arquivo);
@@ -78,7 +78,7 @@ int main(){
 		//printf("Double mais rapido que float, diff=%lf\n",floatTest);
 		fputs("a\n", arquivo);
 	}else{
-		//printf("Float mais rapido que double, diff=%lf\n",floatTest); MAIS RAPIDO
+		//printf("Float mais rapido que double, diff=%lf\n",floatTest);
 		fputs("b\n", arquivo);
 	}
 	fclose(arquivo);
@@ -89,7 +89,7 @@ int main(){
 		zoTest+=zeroVsOne(ITERATIONS);
 	zoTest/=NOFTESTS;
 	if(zoTest>0){
-		//printf("1*=a mais rapido que 0+=a, diff=%lf\n",zoTest); MUITO MAIS RAPIDO
+		//printf("1*=a mais rapido que 0+=a, diff=%lf\n",zoTest);
 		fputs("a\n", arquivo);
 	}else{
 		//printf("0+=a mais rapido que 1*=a, diff=%lf\n",zoTest);
@@ -103,7 +103,7 @@ int main(){
 		forVTest+=forVar(ITERATIONS);
 	forVTest/=NOFTESTS;
 	if(forVTest>0){
-		//printf("Outside mais rapido que inside, diff=%lf\n",forVTest); MUITO MAIS RAPIDO
+		//printf("Outside mais rapido que inside, diff=%lf\n",forVTest);
 		fputs("a\n", arquivo);
 	}else{
 		//printf("Inside mais rapido que outside, diff=%lf\n",forVTest);
@@ -117,7 +117,7 @@ int main(){
 		forRTest+=forReverse(ITERATIONS);
 	forRTest/=NOFTESTS;
 	if(forRTest>0){
-		//printf("Reverse mais rapido que normal, diff=%lf\n",forRTest); MUITO MAIS RAPIDO
+		//printf("Reverse mais rapido que normal, diff=%lf\n",forRTest);
 		fputs("a\n", arquivo);
 	}else{
 		//printf("Normal mais rapido que reverse, diff=%lf\n",forRTest);
@@ -134,7 +134,7 @@ int main(){
 		//printf("Acessar diretamente mais rapido que salvar, diff=%lf\n",saveElementTest);
 		fputs("a\n", arquivo);
 	}else{
-		//printf("salvar mais rapido que acessar diretamente, diff=%lf\n",saveElementTest); MUITO MAIS RAPIDO
+		//printf("salvar mais rapido que acessar diretamente, diff=%lf\n",saveElementTest); 
 		fputs("b\n", arquivo);
 	}
 	fclose(arquivo);

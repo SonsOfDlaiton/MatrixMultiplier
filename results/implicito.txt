@@ -1,0 +1,29 @@
+Description:	Dlaiton, best way dgemm.
+
+Size: 31	Mflop/s:  1850.52	Percentage:  9.64	Seconds:0.131881
+Size: 32	Mflop/s:  1840.33	Percentage:  9.59	Seconds:0.145863
+Size: 96	Mflop/s:  2240.35	Percentage: 11.67	Seconds:0.101097
+Size: 97	Mflop/s:  2262.59	Percentage: 11.78	Seconds:0.103264
+Size: 127	Mflop/s:  2270.31	Percentage: 11.82	Seconds:0.115488
+Size: 128	Mflop/s:  2244.56	Percentage: 11.69	Seconds:0.119594
+Size: 129	Mflop/s:  2294.54	Percentage: 11.95	Seconds:0.119752
+Size: 191	Mflop/s:  2328.96	Percentage: 12.13	Seconds:0.191478
+Size: 192	Mflop/s:  2300.28	Percentage: 11.98	Seconds:0.196926
+Size: 229	Mflop/s:  2329.75	Percentage: 12.13	Seconds:0.164948
+Size: 255	Mflop/s:  2257.31	Percentage: 11.76	Seconds:0.117530
+Size: 256	Mflop/s:   2113.7	Percentage: 11.01	Seconds:0.126998
+Size: 257	Mflop/s:   2320.6	Percentage: 12.09	Seconds:0.117036
+Size: 319	Mflop/s:     2350	Percentage: 12.24	Seconds:0.110508
+Size: 320	Mflop/s:  2145.08	Percentage: 11.17	Seconds:0.122207
+Size: 321	Mflop/s:  2281.09	Percentage: 11.88	Seconds:0.116001
+Size: 417	Mflop/s:  2119.68	Percentage: 11.04	Seconds:0.136835
+Size: 479	Mflop/s:  2325.06	Percentage: 12.11	Seconds:0.189074
+Size: 480	Mflop/s:   2279.4	Percentage: 11.87	Seconds:0.194072
+Size: 511	Mflop/s:  2258.28	Percentage: 11.76	Seconds:0.118172
+Size: 512	Mflop/s:  1880.13	Percentage:  9.79	Seconds:0.142775
+Size: 639	Mflop/s:   2104.2	Percentage: 10.96	Seconds:0.247996
+Size: 640	Mflop/s:  1895.53	Percentage:  9.87	Seconds:0.276592
+Size: 767	Mflop/s:  2099.16	Percentage: 10.93	Seconds:0.429903
+Size: 768	Mflop/s:     1900	Percentage:  9.90	Seconds:0.476826
+Size: 769	Mflop/s:  2127.25	Percentage: 11.08	Seconds:0.427554
+Average percentage of Peak = 11.3018

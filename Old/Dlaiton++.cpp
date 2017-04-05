@@ -45,12 +45,12 @@ int main(){
 
 	implicito=Implicito(A, B, S0,x,y,t);
 	explicito=Explicito(A, BT, S1,x,y,t);
-	prevendo=Prevendo(A,B,S2,x,y,t);
+	prevendo=Camadas(A,B,S2,x,y,t);
 	achatando=Achatando(A,B,S3,x,y,t);
 
 	cout<<"Implicito ";cout.width(9);cout<<right<<implicito<<endl;
 	cout<<"Explicito ";cout.width(9);cout<<right<<explicito<<endl;
-	cout<<"Prevendo  ";cout.width(9);cout<<right<<prevendo<<endl;
+	cout<<"Camadas  ";cout.width(9);cout<<right<<prevendo<<endl;
 	cout<<"Achatando ";cout.width(9);cout<<right<<achatando<<endl;
 
 	bestOfAll=implicito;

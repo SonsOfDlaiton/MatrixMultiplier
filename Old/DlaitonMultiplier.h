@@ -25,7 +25,7 @@ long Explicito(int **A, int **BT, int **S, int x, int y, int t){
 	return end-init;
 }
 
-long Prevendo(int **A, int **B, int ***S, int x, int y, int t){
+long Camadas(int **A, int **B, int ***S, int x, int y, int t){
 	long int init, end;
 	init = getTime();
 	for(int i=0;i<x;i++)
@@ -62,7 +62,6 @@ long Achatando(int **A, int **B, int ***S,int x, int y, int t){
 	for(int i=0;i<x;i++)
 	for(int j=0;j<y;j++){
 		for(int k=1;k<t;k++){
-				S[i][j][0]+=S[i][j][k];
 				S[i][j][0]+=S[i][j][k];
 		}
 	}
