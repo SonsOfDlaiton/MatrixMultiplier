@@ -14,16 +14,6 @@ const char* dgemm_desc = "Dlaiton, best way dgemm.";
   //salvar (MUITO MAIS RAPIDO)
  */    
 
-
-/*
-//------------------------------------------------------------//
-//--N3
-      -ijk-~=3.17238%
-      -ikj-~=5.62568%
-      -jik-~=3.11340%
-      -jki-~=11.6985%
-      -kji-~=11.6412%
-      -kij-~=5.77109%
 void square_dgemm(int n, double* A, double* B, double* C){
   int i,j,k;
   for(j=0;j<n;j++){
@@ -33,9 +23,16 @@ void square_dgemm(int n, double* A, double* B, double* C){
         }
       }
     }
-}
+
+/*
 //------------------------------------------------------------//
 //--Implicito-~=6,77%
+  -1-ijk-~=3.17238%
+      -ikj-~=5.62568%
+      -jik-~=3.11340%
+      -jki-~=11.6985%
+      -kji-~=11.6412%
+      -kij-~=5.77109%
 void square_dgemm(int n, double* A, double* B, double* C){
   int i,j,k;
   double t;
