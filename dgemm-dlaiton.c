@@ -13,8 +13,19 @@ const char* dgemm_desc = "Dlaiton, best way dgemm.";
   //normal (MAIS RAPIDO)
   //salvar (MUITO MAIS RAPIDO)
  */    
+int cacheDouble;
+void fillWithZeros(double* O,double* N,int o, int n){
+  int i,j;
+  for(i=0;i<n;i++)
+    for(j=0;j<n;j++){
+      if(i<o&&j<o)
+        N[i+j*n]=O[i+j*o];
+      else
+        N[i+j*n]=0;
+    }
+}
 
-void square_dgemm(int n, double* A, double* B, double* C){
+void implicito(int n, double* A, double* B, double* C){
   int i,j,k;
   for(j=0;j<n;j++){
     for(k=0;k<n;k++){
@@ -23,6 +34,129 @@ void square_dgemm(int n, double* A, double* B, double* C){
         }
       }
     }
+}
+
+void sum(double* A, double* B, double* C, int n, int signal){
+  int i,j;
+  for(i=0;i<n;i++)
+    for(j=0;j<n;j++)
+      C[i+j*n]=A[i+j*n]+B[i+j*n]*signal;
+
+}
+void mult(double* A, double* B, double* C,int n){
+  int i,j,k;
+  double t;
+  for(i=0;i<n;i++){
+      for(j=0;j<n;j++){
+        t=C[i+j*n];
+        for(k=0;k<n;k++){
+          t+=A[i+k*n]*B[k+j*n];        
+        }
+        C[i+j*n]=t;
+      }
+    }
+}
+
+void strassen(int n, double* A, double* B, double* C){
+  //base
+  if(n==1){
+    C[0]=A[0]*B[0];
+    return;
+  }
+  //spliting
+  int ns2=n/2,i,j;
+  int ns22=ns2*ns2;
+  int sizeofns22=ns22*sizeof(double);
+  double* A11=(double*)malloc(sizeofns22),*A12=(double*)malloc(sizeofns22),*A21=(double*)malloc(sizeofns22),*A22=(double*)malloc(sizeofns22);
+  double* B11=(double*)malloc(sizeofns22),*B12=(double*)malloc(sizeofns22),*B21=(double*)malloc(sizeofns22),*B22=(double*)malloc(sizeofns22);
+  double* C11=(double*)malloc(sizeofns22),*C12=(double*)malloc(sizeofns22),*C21=(double*)malloc(sizeofns22),*C22=(double*)malloc(sizeofns22);
+  for(i=0;i<ns2;i++)
+    for(j=0;j<ns2;j++){
+      A11[i+j*ns2]=A[(i)+(j)*n];
+      A12[i+j*ns2]=A[(i)+(j+ns2)*n];
+      A21[i+j*ns2]=A[(i+ns2)+(j)*n];
+      A22[i+j*ns2]=A[(i+ns2)+(j+ns2)*n];
+      B11[i+j*ns2]=B[(i)+(j)*n];
+      B12[i+j*ns2]=B[(i)+(j+ns2)*n];
+      B21[i+j*ns2]=B[(i+ns2)+(j)*n];
+      B22[i+j*ns2]=B[(i+ns2)+(j+ns2)*n];
+    }
+  double* M1=(double*)malloc(sizeofns22),*M2=(double*)malloc(sizeofns22),*M3=(double*)malloc(sizeofns22),*M4=(double*)malloc(sizeofns22),*M5=(double*)malloc(sizeofns22),*M6=(double*)malloc(sizeofns22),*M7=(double*)malloc(sizeofns22);
+  double* T1=(double*)malloc(sizeofns22),*T2=(double*)malloc(sizeofns22);
+  //coefficients
+  if(ns2<=cacheDouble){
+    sum(A11,A22,T1,ns2,1);
+    sum(B11,B22,T2,ns2,1);
+    implicito(ns2,T1,T2,M1);
+    sum(A21,A22,T1,ns2,1);
+    implicito(ns2,T1,B11,M2);
+    sum(B12,B22,T1,ns2,-1);
+    implicito(ns2,A11,T1,M3);
+    sum(B21,B11,T1,ns2,-1);
+    implicito(ns2,A22,T1,M4);
+    sum(A11,A12,T1,ns2,1);
+    implicito(ns2,T1,B22,M5);
+    sum(A21,A11,T1,ns2,-1);
+    sum(B11,B12,T2,ns2,1);
+    implicito(ns2,T1,T2,M6);
+    sum(A12,A22,T1,ns2,-1);
+    sum(B21,B22,T2,ns2,1);
+    implicito(ns2,T1,T2,M7);
+
+  }else{
+    sum(A11,A22,T1,ns2,1);
+    sum(B11,B22,T2,ns2,1);
+    strassen(ns2,T1,T2,M1);
+    sum(A21,A22,T1,ns2,1);
+    strassen(ns2,T1,B11,M2);
+    sum(B12,B22,T1,ns2,-1);
+    strassen(ns2,A11,T1,M3);
+    sum(B21,B11,T1,ns2,-1);
+    strassen(ns2,A22,T1,M4);
+    sum(A11,A12,T1,ns2,1);
+    strassen(ns2,T1,B22,M5);
+    sum(A21,A11,T1,ns2,-1);
+    sum(B11,B12,T2,ns2,1);
+    strassen(ns2,T1,T2,M6);
+    sum(A12,A22,T1,ns2,-1);
+    sum(B21,B22,T2,ns2,1);
+    strassen(ns2,T1,T2,M7);
+  }
+  //results
+  sum(M1,M4,T1,ns2,1);
+  sum(M7,M5,T2,ns2,-1);
+  sum(T1,T2,C11,ns2,1);
+  sum(M3,M5,C12,ns2,1);
+  sum(M2,M4,C21,ns2,1);
+  sum(M1,M2,T1,ns2,-1);
+  sum(M3,M6,T2,ns2,1);
+  sum(T1,T2,C22,ns2,1);
+  //compiling
+  for(i=0;i<ns2;i++)
+    for(j=0;j<ns2;j++){
+      C[i+j*n]=C11[i+j*ns2];
+      C[(i)+(j+ns2)*n]=C12[i+j*ns2];
+      C[(i+ns2)+(j)*n]=C21[i+j*ns2];
+      C[(i+ns2)+(j+ns2)*n]=C22[i+j*ns2];
+    }
+
+}
+
+
+
+void square_dgemm(int n, double* A, double* B, double* C){
+  int cacheLine = 64; //Linha de cache em Kb
+  cacheDouble = (cacheLine*1000)/sizeof(double); //Quantos doubles cabem na linha
+  int newSize=pow(2,ceil(log(n)/log(2))),i,j;
+  double AS[newSize*newSize], BS[newSize*newSize], CS[newSize*newSize];
+  fillWithZeros(A,AS,n,newSize);
+  fillWithZeros(B,BS,n,newSize);
+  fillWithZeros(C,CS,n,newSize);
+  strassen(newSize,AS,BS,CS);
+  for(i=0;i<n;i++)
+  for(j=0;j<n;j++)
+    C[i+j*n]=CS[i+j*newSize];
+}
 
 /*
 //------------------------------------------------------------//
