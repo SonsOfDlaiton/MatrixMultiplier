@@ -12,7 +12,8 @@ const char* dgemm_desc = "Dlaiton, best way dgemm.";
   //var externa (MAIS RAPIDO)
   //normal (MAIS RAPIDO)
   //salvar (MUITO MAIS RAPIDO)
- */    
+ */
+/*    
 int cacheDouble;
 void fillWithZeros(double* O,double* N,int o, int n){
   int i,j;
@@ -158,15 +159,15 @@ void square_dgemm(int n, double* A, double* B, double* C){
     C[i+j*n]=CS[i+j*newSize];
 }
 
-/*
+*/
 //------------------------------------------------------------//
 //--Implicito-~=6,77%
-  -1-ijk-~=3.17238%
-      -ikj-~=5.62568%
-      -jik-~=3.11340%
-      -jki-~=11.6985%
-      -kji-~=11.6412%
-      -kij-~=5.77109%
+ // -1-ijk-~=3.17238%
+   //   -ikj-~=5.62568%
+   //   -jik-~=3.11340%
+   //   -jki-~=11.6985%
+   //   -kji-~=11.6412%
+   //   -kij-~=5.77109%
 void square_dgemm(int n, double* A, double* B, double* C){
   int i,j,k;
   double t;
@@ -180,6 +181,7 @@ void square_dgemm(int n, double* A, double* B, double* C){
       }
     }
 }
+/*
 //------------------------------------------------------------//
 //--Explicito-
       -ijk-~=2.89752%
