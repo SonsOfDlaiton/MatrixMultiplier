@@ -170,6 +170,17 @@ void square_dgemm(int n, double* A, double* B, double* C){
    //   -kij-~=5.77109%
 void square_dgemm(int n, double* A, double* B, double* C){
   int i,j,k;
+  for(k=0;k<n;k++){
+      for(j=0;j<n;j++){
+        for(i=0;i<n;i++){
+          C[i+j*n]+=A[i+k*n]*B[k+j*n];        
+        }
+      }
+    }
+}
+/*
+void square_dgemm(int n, double* A, double* B, double* C){
+  int i,j,k;
   double t;
   for(i=0;i<n;i++){
       for(j=0;j<n;j++){
@@ -181,7 +192,6 @@ void square_dgemm(int n, double* A, double* B, double* C){
       }
     }
 }
-/*
 //------------------------------------------------------------//
 //--Explicito-
       -ijk-~=2.89752%
