@@ -14,7 +14,7 @@
 %\date{09 de abril de 2017}
 \begin{center}
 {\huge Relatório de Programação Paralela: Multiplicação de Matrizes sequencial \\[7.5cm]}
-{\Large Bernard Menezes Moreira da Costa\\Thiago Figueiredo Costa\\[10cm]09 de abril de 2017}
+{\Large Bernard Menezes Moreira da Costa\\Thiago Figueiredo Costa\\[10cm]11 de maio de 2017}
 \end{center}
 %\maketitle
 \newpage
@@ -28,12 +28,14 @@ O trabalho visa a aplicação de conhecimentos adquiridos na matéria de program
 \label{Pseudocódigo}
 \end{figure}
 
-O método acima está correto, entretanto, não aproveita todo o potencial que o hardware possui, uma vez que existem diversos fatores a serem explorados pelo software. Foi fornecido pela professora do curso um de benchmark, através dele foi possível analisar o ganho computacional obtido na solução proposta pela dupla.
+O método acima está correto, entretanto, não aproveita todo o potencial que o hardware possui, uma vez que existem diversos fatores a serem explorados pelo software. Foi fornecido pela professora do curso um de benchmark, através dele foi possível analisar o ganho computacional obtido na solução proposta pela dupla. Inicialmente o trabalho deve ser feito forçando o compilador a evitar toda forma de vetorização através da flag "-O0". Depois deve-se comparar o resultado com o mesmo programa vetorizado usando as flags "-O3 -ftree-vectorize -march=native -nostartfiles" e também comparar com o programa escrito de forma paralela.
 
 Todos os arquivos estão disponíveis em:$\linebreak$
-https://github.com/SonsOfDlaiton/MatrixMultiplier
-$\linebreak$
-Obs:. Todos os códigos de abordagem antiga, speedtest, algoritmos, além de todos os arquivos necessário para fazer a prática estão na pasta junto com o relátorio. Os código mais rapido para a multiplicação e todos os outros(comentados) estão no arquivo "dgemm-dlaiton.c".
+https://github.com/SonsOfDlaiton/MatrixMultiplier,
+
+\section{Arquivos}
+A primeira parte do trabalho está na pasta "No-Vectorize" e contém todos os códigos de abordagem antiga, os testes de velocidade estão na pasta "SpeedTest", em "Old\_Code" estão os códigos de teste inicial antes de se pegar o código base da professora. Em "Auto-Vectorize" estão os arquivos usando vetorização do compilador, em "OMP" estão os arquivos usando OMP para criar o código paralelo, em "CUDA" se encontram os arquivos do prototipo para multiplicar matrizes usando CUDA. O arquivo que contém os codigos é"dgemm-dlaiton.c".
+
 \section{Metodologia}
 A princípio foi desenvolvido um speedtest, programa em C utilizado para testar quais técnicas de igual resultado são mais rápidas, a tabela a seguir representa os testes realizados:
 %FOTO
@@ -54,7 +56,7 @@ Todos os métodos foram implementados utilizando os resultados obtidos no speedt
 
 \newpage
 \section{Resultados Computacionais}
-O ambiente computacional utilizado tem as seguintes características: sistema operacional MacOSX 10.12.3, processador 2,4GHz intel i5-6200u, memoria 8GB DDR3 1600MHz, Placa Gráfica Intel HD 520. A maneira de analisar o ganho computacional dos métodos propostos foi medir o tempo de execução comparado a dgemm otimizada oferecida na biblioteca BLAS, em porcentagem (o quanto o método testado se aproximou da solução da biblioteca). A cada teste foram testados 26 tamanhos diferentes do tamanho N = 31, 32, 96, 127, 129, 191, 229, 255, 256, 257, 319, 320, 417, 480, 511, 512, 639, 640, 767, 768 e 769. Para cada uma existe uma porcentagem referente ao teste e o número de Mflops (Mega Flops) necessários para aquela execução em específico. 
+ A maneira de analisar o ganho computacional dos métodos propostos foi medir o tempo de execução comparado a dgemm otimizada oferecida na biblioteca BLAS, em porcentagem (o quanto o método testado se aproximou da solução da biblioteca). A cada teste foram testados 26 tamanhos diferentes do tamanho N = 31, 32, 96, 127, 129, 191, 229, 255, 256, 257, 319, 320, 417, 480, 511, 512, 639, 640, 767, 768 e 769. Para cada uma existe uma porcentagem referente ao teste e o número de Mflops (Mega Flops) necessários para aquela execução em específico. 
 
 Abaixo encontra-se a tabela de resultados com destaque para as 4 melhores porcentagens encontradas:
 %FOTOS
@@ -133,6 +135,13 @@ Análises por métodos:
 
 Após a plotagem dos gráficos, foi analisado o desempenho de cada algoritmo em relação o tamanho de entrada. Foi procurado métodos que fossem mais eficientes com tamanho de entradas grandes, médios e pequenos, a ideia era que se fossem encontrados métodos ótimos diferentes para cada intervalo definido, o algoritmo a ser entregue no trabalho seria dependente do tamanho de entrada. Entretanto os resultados obtidos foram de certa forma constantes, por exemplo, o método mais eficiente testado teve os melhores resultados em todos os intervalos do tamanho de entrada.
 
+\newpage
+\section{Vetorização}
+\subsection{Auto-vetorização}
+Ao usar o codigo implicito permitindo sua vetorização obtivemos um resultado bem melhor, de 25\%, que chega a ser aproximadamente 2,3 vezes rápido.
+\subsection{Open MP}
+Ao fazer um codigo usando open MP obtivemos um resultado de 7\%, que não foi satisfatório pois ficou inferior às outras abordagens.
+
 \section{Conclusões}
 Através das análises de resultados obtidos ficou claro a importância de considerar o cache ao implementar um algoritmo que tenha eficiência máxima. Todos os métodos que não levaram em consideração esse fato obtiveram resultados muito inferiores aos quais desfrutaram dessa memória. Ao tentar executar o algoritmo em outro computador foi possível perceber o quanto a arquitetura e as configurações de uma máquina interferem nos resultados dos testes, o que demonstra o quão essencial é manter as análises em uma situação específica de hardware.
 
@@ -148,4 +157,8 @@ A principal conclusão permitida pela realização do trabalho foi a confirmaç�
 \end{figure}
 
 De acordo com ela, devemos reduzir ao máximo o termo “1/q” para obtermos o melhor tempo de execução possível, para isso resta aumentar o número de operações aritméticas e reduzir os acessos à memória lenta. Os métodos que buscaram otimizar o uso da memória rápida (explícito e implícito), e consequentemente, reduziram acessos à memória lenta obtiveram os melhores resultados. Já os métodos mais lentos (multiplicação em camadas simples e usando achatamento) aumentaram o número de operações aritméticas, em contrapartida, aumentaram acessos à memória lenta o que acabou por inibir o ganho computacional.
+
+Os resultados não foram satisfatorios pois, embora o valores obtidos tivessem sido acima do esperado para um código não vetorizado, estavamos usando o makefile que foi disponibilizado com a flag "-O1" crendo que não haveria vetorização e o certo deveria ser "-O0", ao perceber isso vimos que nosso melhor código com a flag certa reduziu seu resultado para 4\%, um resultado pessímo. Por usar o "ambiente" incorreto durante todo o trabalho não foi possivel desenvolver um bom algoritmo para multiplicar matrizes sem vetorizar.
+
+
 \end{document}

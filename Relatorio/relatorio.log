@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.4.9)  18 APR 2017 21:27
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.4.9)  11 MAY 2017 19:14
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -498,13 +498,8 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <5> on input line 33.
 
-Underfull \hbox (badness 10000) in paragraph at lines 33--37
-[]\T1/aer/m/n/10 Todos os ar-qui-vos es-tï¿½o dis-po-nï¿½-veis em:$
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 33--37
-\T1/aer/m/n/10 https://github.com/SonsOfDlaiton/MatrixMultiplier $
+Underfull \hbox (badness 10000) in paragraph at lines 33--35
+[]\T1/aer/m/n/10 Todos os ar-qui-vos es-tão dis-po-ní-veis em:$
  []
 
 [2 <./imagens/pseudocodigo.png (PNG copy)>] [3]
@@ -512,21 +507,21 @@ Underfull \hbox (badness 10000) in paragraph at lines 33--37
 File: imagens/resultados.png Graphic file (type png)
 
 <use imagens/resultados.png>
-Package pdftex.def Info: imagens/resultados.png used on input line 63.
+Package pdftex.def Info: imagens/resultados.png used on input line 65.
 (pdftex.def)             Requested size: 294.49753pt x 368.57358pt.
 
 <imagens/implicito.png, id=21, 867.24pt x 500.87125pt>
 File: imagens/implicito.png Graphic file (type png)
 
 <use imagens/implicito.png>
-Package pdftex.def Info: imagens/implicito.png used on input line 73.
+Package pdftex.def Info: imagens/implicito.png used on input line 75.
 (pdftex.def)             Requested size: 303.53854pt x 175.30756pt.
 
 <imagens/explicito_simples.png, id=22, 867.24pt x 500.87125pt>
 File: imagens/explicito_simples.png Graphic file (type png)
 
 <use imagens/explicito_simples.png>
-Package pdftex.def Info: imagens/explicito_simples.png used on input line 80.
+Package pdftex.def Info: imagens/explicito_simples.png used on input line 82.
 (pdftex.def)             Requested size: 303.53854pt x 175.30756pt.
  [4 <./imagens/resultados.png (PNG copy)>]
 [5 <./imagens/implicito.png> <./imagens/explicito_simples.png>]
@@ -534,21 +529,21 @@ Package pdftex.def Info: imagens/explicito_simples.png used on input line 80.
 File: imagens/explicito_dinamico.png Graphic file (type png)
 
 <use imagens/explicito_dinamico.png>
-Package pdftex.def Info: imagens/explicito_dinamico.png used on input line 87.
+Package pdftex.def Info: imagens/explicito_dinamico.png used on input line 89.
 (pdftex.def)             Requested size: 303.53854pt x 175.30756pt.
 
 <imagens/camadas_simples.png, id=30, 867.24pt x 500.87125pt>
 File: imagens/camadas_simples.png Graphic file (type png)
 
 <use imagens/camadas_simples.png>
-Package pdftex.def Info: imagens/camadas_simples.png used on input line 94.
+Package pdftex.def Info: imagens/camadas_simples.png used on input line 96.
 (pdftex.def)             Requested size: 303.53854pt x 175.30756pt.
  [6 <./imagens/explicito_dinamico.png> <./imagens/camadas_simples.png>]
 <imagens/camadas_achatamento.png, id=34, 867.24pt x 500.87125pt>
 File: imagens/camadas_achatamento.png Graphic file (type png)
 
 <use imagens/camadas_achatamento.png>
-Package pdftex.def Info: imagens/camadas_achatamento.png used on input line 101
+Package pdftex.def Info: imagens/camadas_achatamento.png used on input line 103
 .
 (pdftex.def)             Requested size: 303.53854pt x 175.30756pt.
 
@@ -557,36 +552,36 @@ File: imagens/comparacao_algoritmos.png Graphic file (type png)
 
 <use imagens/comparacao_algoritmos.png>
 Package pdftex.def Info: imagens/comparacao_algoritmos.png used on input line 1
-08.
+10.
 (pdftex.def)             Requested size: 342.27791pt x 208.77948pt.
  [7 <./imagens/camadas_achatamento.png> <./imagens/comparacao_algoritmos.png>]
 <imagens/todos_algoritmos.png, id=40, 867.24pt x 500.87125pt>
 File: imagens/todos_algoritmos.png Graphic file (type png)
 
 <use imagens/todos_algoritmos.png>
-Package pdftex.def Info: imagens/todos_algoritmos.png used on input line 115.
+Package pdftex.def Info: imagens/todos_algoritmos.png used on input line 117.
 (pdftex.def)             Requested size: 303.53854pt x 175.30756pt.
-LaTeX Font Info:    Try loading font information for OMS+aer on input line 123.
+LaTeX Font Info:    Try loading font information for OMS+aer on input line 125.
 
 
 (/usr/local/texlive/2016/texmf-dist/tex/latex/ae/omsaer.fd
 File: omsaer.fd 1999/12/27
 )
 LaTeX Font Info:    Font shape `OMS/aer/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 123.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 125.
  [8 <./imagens/todos_algoritmos.png>] <imagens/formula.png, id=45, 332.74312pt 
 x 114.4275pt>
 File: imagens/formula.png Graphic file (type png)
 
 <use imagens/formula.png>
-Package pdftex.def Info: imagens/formula.png used on input line 145.
+Package pdftex.def Info: imagens/formula.png used on input line 147.
 (pdftex.def)             Requested size: 232.91858pt x 80.0987pt.
  [9 <./imagens/formula.png>] [10] (./relatorio.aux) ) 
 Here is how much of TeX's memory you used:
- 2572 strings out of 493014
- 34419 string characters out of 6133352
- 97952 words of memory out of 5000000
- 6050 multiletter control sequences out of 15000+600000
+ 2580 strings out of 493014
+ 34547 string characters out of 6133352
+ 98952 words of memory out of 5000000
+ 6058 multiletter control sequences out of 15000+600000
  16129 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  37i,7n,23p,1188b,233s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -599,7 +594,7 @@ ist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2016/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2016/texmf-dist/
 fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2016/texmf-dist/fon
 ts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on relatorio.pdf (10 pages, 246038 bytes).
+Output written on relatorio.pdf (10 pages, 247485 bytes).
 PDF statistics:
  79 PDF objects out of 1000 (max. 8388607)
  48 compressed objects within 1 object stream
