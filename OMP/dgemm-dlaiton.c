@@ -170,7 +170,7 @@ void square_dgemm(int n, double* A, double* B, double* C){
    //   -kji-~=11.6412%
    //   -kij-~=5.77109%
 void square_dgemm(int n, double* A, double* B, double* C){
-int test=2, j, k;
+int test=1, j, k;
 omp_set_num_threads(test);  
 for(k=0;k<n;k++){
       for(j=0;j<n;j++){
