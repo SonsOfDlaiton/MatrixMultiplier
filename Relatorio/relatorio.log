@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.4.9)  11 MAY 2017 19:14
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.4.9)  11 MAY 2017 20:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -523,8 +523,12 @@ File: imagens/explicito_simples.png Graphic file (type png)
 <use imagens/explicito_simples.png>
 Package pdftex.def Info: imagens/explicito_simples.png used on input line 82.
 (pdftex.def)             Requested size: 303.53854pt x 175.30756pt.
- [4 <./imagens/resultados.png (PNG copy)>]
-[5 <./imagens/implicito.png> <./imagens/explicito_simples.png>]
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+[4 <./imagens/resultados.png (PNG copy)>] [5 <./imagens/implicito.png> <./image
+ns/explicito_simples.png>]
 <imagens/explicito_dinamico.png, id=29, 867.24pt x 500.87125pt>
 File: imagens/explicito_dinamico.png Graphic file (type png)
 
@@ -569,35 +573,35 @@ File: omsaer.fd 1999/12/27
 )
 LaTeX Font Info:    Font shape `OMS/aer/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 125.
- [8 <./imagens/todos_algoritmos.png>] <imagens/formula.png, id=45, 332.74312pt 
-x 114.4275pt>
+ [8 <./imagens/todos_algoritmos.png>] [9] <imagens/formula.png, id=48, 332.7431
+2pt x 114.4275pt>
 File: imagens/formula.png Graphic file (type png)
 
 <use imagens/formula.png>
-Package pdftex.def Info: imagens/formula.png used on input line 147.
+Package pdftex.def Info: imagens/formula.png used on input line 154.
 (pdftex.def)             Requested size: 232.91858pt x 80.0987pt.
- [9 <./imagens/formula.png>] [10] (./relatorio.aux) ) 
+ [10 <./imagens/formula.png>] [11] (./relatorio.aux) ) 
 Here is how much of TeX's memory you used:
- 2580 strings out of 493014
- 34547 string characters out of 6133352
- 98952 words of memory out of 5000000
- 6058 multiletter control sequences out of 15000+600000
- 16129 words of font info for 37 fonts, out of 8000000 for 9000
+ 2587 strings out of 493014
+ 34609 string characters out of 6133352
+ 97953 words of memory out of 5000000
+ 6060 multiletter control sequences out of 15000+600000
+ 20772 words of font info for 44 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  37i,7n,23p,1188b,233s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/local/texlive/2016/t
-exmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2016/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2016/tex
-mf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2016/texmf
--dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2016/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2016/texmf-dis
-t/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2016/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2016/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on relatorio.pdf (10 pages, 247485 bytes).
+</usr/local/texlive/2016/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2016/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2016/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2016/texm
+f-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2016/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2016/texmf-di
+st/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2016/texmf-dist
+/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2016/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on relatorio.pdf (11 pages, 248952 bytes).
 PDF statistics:
- 79 PDF objects out of 1000 (max. 8388607)
- 48 compressed objects within 1 object stream
+ 82 PDF objects out of 1000 (max. 8388607)
+ 50 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  51 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -28,13 +28,13 @@ O trabalho visa a aplicação de conhecimentos adquiridos na matéria de program
 \label{Pseudocódigo}
 \end{figure}
 
-O método acima está correto, entretanto, não aproveita todo o potencial que o hardware possui, uma vez que existem diversos fatores a serem explorados pelo software. Foi fornecido pela professora do curso um de benchmark, através dele foi possível analisar o ganho computacional obtido na solução proposta pela dupla. Inicialmente o trabalho deve ser feito forçando o compilador a evitar toda forma de vetorização através da flag "-O0". Depois deve-se comparar o resultado com o mesmo programa vetorizado usando as flags "-O3 -ftree-vectorize -march=native -nostartfiles" e também comparar com o programa escrito de forma paralela.
+O método acima está correto, entretanto, não aproveita todo o potencial que o hardware possui, uma vez que existem diversos fatores a serem explorados pelo software. Foi fornecido pela professora do curso um de benchmark, através dele foi possível analisar o ganho computacional obtido na solução proposta pela dupla. Inicialmente o trabalho deveria ser feito forçando o compilador a evitar toda forma de vetorização através da flag "-O0". Depois deveria-se comparar o resultado com o mesmo programa vetorizado usando as flags "-O3 -ftree-vectorize -march=native -nostartfiles"  e também comparar com o programa escrito de forma paralela.
 
 Todos os arquivos estão disponíveis em:$\linebreak$
 https://github.com/SonsOfDlaiton/MatrixMultiplier,
 
 \section{Arquivos}
-A primeira parte do trabalho está na pasta "No-Vectorize" e contém todos os códigos de abordagem antiga, os testes de velocidade estão na pasta "SpeedTest", em "Old\_Code" estão os códigos de teste inicial antes de se pegar o código base da professora. Em "Auto-Vectorize" estão os arquivos usando vetorização do compilador, em "OMP" estão os arquivos usando OMP para criar o código paralelo, em "CUDA" se encontram os arquivos do prototipo para multiplicar matrizes usando CUDA. O arquivo que contém os codigos é"dgemm-dlaiton.c".
+A primeira parte do trabalho está na pasta "No-Vectorize" e contém todos os códigos de abordagem antiga, os testes de velocidade estão na pasta "SpeedTest", em "Old\_Code" estão os códigos de teste inicial antes de se pegar o código base da professora. Em "Auto-Vectorize" estão os arquivos usando vetorização do compilador, em "OMP" estão os arquivos usando OMP para criar o código paralelo, em "CUDA" se encontram os arquivos do protótipo para multiplicar matrizes usando CUDA. O arquivo que contém os codigos é"dgemm-dlaiton.c".
 
 \section{Metodologia}
 A princípio foi desenvolvido um speedtest, programa em C utilizado para testar quais técnicas de igual resultado são mais rápidas, a tabela a seguir representa os testes realizados:
@@ -138,9 +138,9 @@ Após a plotagem dos gráficos, foi analisado o desempenho de cada algoritmo em 
 \newpage
 \section{Vetorização}
 \subsection{Auto-vetorização}
-Ao usar o codigo implicito permitindo sua vetorização obtivemos um resultado bem melhor, de 25\%, que chega a ser aproximadamente 2,3 vezes rápido.
+Ao usar o código implicito permitindo sua vetorização obtivemos um resultado bem melhor, de 25\%, que chega a ser aproximadamente 2,3 vezes mais rápido que o código não vetorizado.
 \subsection{Open MP}
-Ao fazer um codigo usando open MP obtivemos um resultado de 7\%, que não foi satisfatório pois ficou inferior às outras abordagens.
+Ao fazer um código usando open MP obtivemos um resultado de 7\%, que não foi satisfatório pois ficou inferior às outras abordagens.
 
 \section{Conclusões}
 Através das análises de resultados obtidos ficou claro a importância de considerar o cache ao implementar um algoritmo que tenha eficiência máxima. Todos os métodos que não levaram em consideração esse fato obtiveram resultados muito inferiores aos quais desfrutaram dessa memória. Ao tentar executar o algoritmo em outro computador foi possível perceber o quanto a arquitetura e as configurações de uma máquina interferem nos resultados dos testes, o que demonstra o quão essencial é manter as análises em uma situação específica de hardware.
@@ -158,7 +158,7 @@ A principal conclusão permitida pela realização do trabalho foi a confirmaç�
 
 De acordo com ela, devemos reduzir ao máximo o termo “1/q” para obtermos o melhor tempo de execução possível, para isso resta aumentar o número de operações aritméticas e reduzir os acessos à memória lenta. Os métodos que buscaram otimizar o uso da memória rápida (explícito e implícito), e consequentemente, reduziram acessos à memória lenta obtiveram os melhores resultados. Já os métodos mais lentos (multiplicação em camadas simples e usando achatamento) aumentaram o número de operações aritméticas, em contrapartida, aumentaram acessos à memória lenta o que acabou por inibir o ganho computacional.
 
-Os resultados não foram satisfatorios pois, embora o valores obtidos tivessem sido acima do esperado para um código não vetorizado, estavamos usando o makefile que foi disponibilizado com a flag "-O1" crendo que não haveria vetorização e o certo deveria ser "-O0", ao perceber isso vimos que nosso melhor código com a flag certa reduziu seu resultado para 4\%, um resultado pessímo. Por usar o "ambiente" incorreto durante todo o trabalho não foi possivel desenvolver um bom algoritmo para multiplicar matrizes sem vetorizar.
+Os resultados não foram satisfatorios pois, embora o valores obtidos tivessem sido acima do esperado para um código não vetorizado, estávamos usando o makefile que foi disponibilizado com a flag -O1 crendo que não haveria vetorização e o certo deveria ser -O0, ao perceber isso, vimos que nosso melhor código com a flag certa reduziu seu resultado para 4\%, um resultado péssimo. Por usar o ambiente incorreto durante todo o trabalho não foi possível desenvolver um bom algoritmo para multiplicar matrizes sem vetorizar.
 
 
 \end{document}
